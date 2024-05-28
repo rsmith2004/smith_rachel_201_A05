@@ -102,6 +102,12 @@ Extract the value `8162` (LeBron James points) in 2 different ways:
 - using names
 
 ```{r}
+#using indexing
+player_info[[2]][[4]]
+
+#using names
+player_info[['LJ']][['points']]
+
 
 ```
 
@@ -113,6 +119,7 @@ Add a new named element to the end of each player's list called `height`. The he
 Print the `player_info` list to prove you were successful.
 
 ```{r}
+player_info 
 
 ```
 
