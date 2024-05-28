@@ -56,7 +56,8 @@ To get full credit for this Question you must:
 
 ## Screenshot/image of RStudio
 
-![](filepath.png)
+![](screenshot.png)
+
 
 :::
 
@@ -171,6 +172,23 @@ ie: 91 rounds to 90; 173 rounds to 200; 1450 rounds to 1000
 Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a row/col.
 
 ```{r}
+#function rounding depending on the digit 
+round_digits <- function(x){
+  if (nchar(x) == 2){ #rounding for two digits
+    return(round(x / 10) * 10)
+  }else if (nchar(x) == 3){ #rounding for three digits
+    return(round(x / 100) * 100)
+  }else if(nchar(x) == 4){ #rounding for four digits
+    return(round(x / 1000) * 1000)
+  }
+}
+
+#applying function to matrix
+mat_round <- apply(mat_rand, 1:2, round_digits)
+
+#printing newly created matrix 
+mat_round
+
 
 ```
 
