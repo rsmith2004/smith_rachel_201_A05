@@ -263,5 +263,18 @@ Run your function with 935068.
 
 ```{r}
 
+#recursive function calculating the sum of the digits
+sum_of_digits <- function(num){
+  #base case: if the number is a single digit, stop
+  if(num < 10){ 
+    return(num)
+  }else{
+    #recursive case, adding last number to the rest of the sum_of_digits
+    return(num %% 10 + sum_of_digits(num %/% 10))
+  }
+}
+
+#running the function
+sum_of_digits(935068)
 ```
 
