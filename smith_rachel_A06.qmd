@@ -120,8 +120,10 @@ Add a new named element to the end of each player's list called `height`. The he
 Print the `player_info` list to prove you were successful.
 
 ```{r}
+#vector with each player's heights
 heights <- c(MJ = 78, LJ = 81, KB = 78, KA = 86, SO = 85) 
 
+#loop adding heights to respective player 
 for (player in names(player_info)) {
   player_info[[player]]$height <- heights[[player]]
 }
@@ -129,18 +131,6 @@ for (player in names(player_info)) {
 # printing the updated  list
 player_info
 
-
-#why is it printing the initials???
-#because each height is a list, why is this happening????
-
-
-#### OR ARE WE SUPPOSED TO DO THIS:
-
-player_info$MJ$height <- 78
-player_info$LJ$height <- 81
-player_info$KB$height <- 78
-player_info$KA$height <- 86
-  player_info$SO$height <- 85
 ```
 
 
@@ -159,14 +149,23 @@ Hint: initialize an empty list
 Note: this must still run correctly even if the values were to change or if another player were added to the list or if the player order changed.
 
 ```{r}
+#initializing a list
 points_per_game <- list()
 
+#function calculating the points per game
 for (player in names(player_info)){
-  x_points <- player_info[[player]]$points
-  x_games_played <- player_info[[player]]$games_played
+  #getting the points of that player
+  x_points <- player_info[[player]]$points 
+  
+  #getting the games played of that player
+  x_games_played <- player_info[[player]]$games_played 
+  
+  #calculating the points per game of that player and adding to list
   points_per_game[[player]] <- x_points / x_games_played 
 
 }
+
+#printing the new list 
 points_per_game
 
 ```
@@ -181,7 +180,10 @@ Use the list created in Part c and an appropriate apply function to round each v
 Store the output as a vector and print the results.
 
 ```{r}
+#rounding the points per game and creating a new vector
 rounded_ppg <- sapply(points_per_game, function(x){round(x, digits = 2)})
+
+#printing the vector
 rounded_ppg
 
 ```
@@ -245,19 +247,12 @@ max_temps <- read_tsv("state_max_temps.tsv") |>
 Calculate the average temperature for each month across the whole data frame (using the data for all three states together).
 
 ```{r}
-
 #calculating averages by applying mean function to the months columns
 #storing the output
 avg_temp <- apply(max_temps[, c('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec')], 2, mean)
 
 #printing the averages
 avg_temp
-
-
-
-#avg_temp <- apply(max_temps[, 'jan':'dec'], 2, mean)
-#why does this not work
-#what is the output supposed to be? data frame too? 
 
 ```
 
