@@ -133,6 +133,14 @@ player_info
 #why is it printing the initials???
 #because each height is a list, why is this happening????
 
+
+#### OR ARE WE SUPPOSED TO DO THIS:
+
+player_info$MJ$height <- 78
+player_info$LJ$height <- 81
+player_info$KB$height <- 78
+player_info$KA$height <- 86
+  player_info$SO$height <- 85
 ```
 
 
@@ -199,11 +207,11 @@ Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a r
 #function rounding depending on the digit 
 round_digits <- function(x){
   if (nchar(x) == 2){ #rounding for two digits
-    return(round(x / 10) * 10)
+    return(round(x, -1))
   }else if (nchar(x) == 3){ #rounding for three digits
-    return(round(x / 100) * 100)
+    return(round(x, -2))
   }else if(nchar(x) == 4){ #rounding for four digits
-    return(round(x / 1000) * 1000)
+    return(round(x, -3))
   }
 }
 
@@ -249,6 +257,7 @@ avg_temp
 
 #avg_temp <- apply(max_temps[, 'jan':'dec'], 2, mean)
 #why does this not work
+#what is the output supposed to be? data frame too? 
 
 ```
 
