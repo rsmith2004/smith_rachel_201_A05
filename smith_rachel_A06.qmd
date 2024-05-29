@@ -214,6 +214,18 @@ Calculate the average temperature for each month across the whole data frame (us
 
 ```{r}
 
+#calculating averages by applying mean function to the months columns
+#storing the output
+avg_temp <- apply(max_temps[, c('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec')], 2, mean)
+
+#printing the averages
+avg_temp
+
+
+
+#avg_temp <- apply(max_temps[, 'jan':'dec'], 2, mean)
+#why does this not work
+
 ```
 
 
@@ -228,6 +240,15 @@ Create three new data frames by slicing the data by state.
 No need to print any output here.
 
 ```{r}
+
+#data frame for Colorado
+CO_temps <- subset(max_temps, state == "CO")
+  
+#data frame for Ohio
+OH_temps <- subset(max_temps, state == "OH")
+  
+#data frame for Virginia 
+VA_temps <- subset(max_temps, state == "VA")
 
 ```
 
@@ -249,6 +270,14 @@ Example (this is NOT the answer just an example of what goes in the {}):
 Note: This code should still run successfully even if the numbers were to change.
 
 ```{r}
+#calculating the median for each year 
+med_ann <- apply(CO_temps[, c('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec')], 1, median)
+
+#printing the sentence + calculating the max/min + finding the year by indexing
+print(paste0("The maximum median annual temperature of ", max(med_ann), 
+             " occurred in ", CO_temps$year[which.max(med_ann)], 
+             " and the minimum median annual temperature of ", min(med_ann), 
+             " occurred in ", CO_temps$year[which.min(med_ann)],"."))
 
 ```
 
